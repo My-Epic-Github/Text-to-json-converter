@@ -1,0 +1,3 @@
+"""HOW TO USE"""
+It's fairly simple really, I could integrate this to a website one day if I wanted to, but anyways here's how you use it:
+All you do is place a file named words.txt (you can alter the name in the actual script if you want) and run the script. It should return a file named output.json in the same directory. There are a few blank strings in the json file you may need to clean up but it should work fine. Also please note that it will output all the words in the text file to a category or whatever its called named wordlist, you can change that if you want. Enjoy! (this was made for a very specific use case)
