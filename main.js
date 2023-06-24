@@ -1,11 +1,13 @@
 const fs = require('fs');
 const path = require('path');
 const prompt = require('prompt-sync')();
-const readline = require('readline')
+const readline = require('readline');
+const rcedit = require('rcedit');
 const r1 = readline.createInterface({
     input : process.stdin,
     output : process.stdout
 })
+
 
 function txtToJson(dir, filename) {
     const filein = fs.readFile(dir, 'utf8', (err, data) => {

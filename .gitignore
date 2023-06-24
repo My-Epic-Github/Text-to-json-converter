@@ -1,4 +1,5 @@
 output.json
 words.txt
-main-linux
-main-macos
+text-to-json-linux
+text-to-json-macos
+package.json
