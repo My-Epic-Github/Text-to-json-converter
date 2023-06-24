@@ -32,7 +32,10 @@ function txtToJson(dir, filename) {
                 return;
             };
 
-            return console.log('Data written successfully!');
+            console.log('Data written successfully!');
+            return r1.question('Press any button to exit..', () => {
+                r1.close();
+            })
 
 
 
