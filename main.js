@@ -41,15 +41,8 @@ function txtToJson(dir) {
     });
 }
 
-function processInput() {
+
 let directoryin = prompt('Input directory: ');
 return txtToJson(directoryin);
-}
 
-while (true) {
-    processInput();
-    r1.question('Press any key to leave..', () => {
-        return r1.close();
-    })
-}
 
