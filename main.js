@@ -1,5 +1,10 @@
 const fs = require('fs');
 const prompt = require('prompt-sync')();
+const readline = require('readline')
+const r1 = readline.createInterface({
+    input : process.stdin,
+    output : process.stdout
+})
 
 function txtToJson(dir) {
     const filein = fs.readFile(dir, 'utf8', (err, data) => {
@@ -26,7 +31,7 @@ function txtToJson(dir) {
                 return;
             };
 
-            console.log('Data written successfully!');
+            return console.log('Data written successfully!');
 
 
 
@@ -35,9 +40,16 @@ function txtToJson(dir) {
 
     });
 }
+
+function processInput() {
+let directoryin = prompt('Input directory: ');
+return txtToJson(directoryin);
+}
+
 while (true) {
-    let directoryin = prompt('Input directory: ');
-    txtToJson(directoryin);
-    break;
+    processInput();
+    r1.question('Press any key to leave..', () => {
+        return r1.close();
+    })
 }
 
