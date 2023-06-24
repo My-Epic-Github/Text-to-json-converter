@@ -1,34 +1,38 @@
 const fs = require('fs');
 
-const filein = fs.readFile('words.txt', 'utf8', (err, data) => {
 
-    if (err) {
-        console.log(err);
-        return;
-    }
-    words = data.replace(/\s/g, ' ').split(' ')
+function txtToJson(dir, array) {
+    const filein = fs.readFile(dir, 'utf8', (err, data) => {
 
-    console.log('its working..')
+        if (err) {
+            console.log(err);
+            return;
+        }
+        words = data.replace(/\s/g, ' ').split('-')
 
-    const jsonData = {wordlist : words};
-    const jsonform = JSON.stringify(jsonData, 2, 4);
-    console.log(jsonform);
-    const output = JSON.parse(jsonform);
+        console.log('its working..')
 
-    fs.writeFile('output.json', jsonform, (err) => {
-        if (err) {console.log(err)
-        throw err;
-        return;
-        };
+        const jsonData = { dir : words };
+        const jsonform = JSON.stringify(jsonData, 2, 4);
+        console.log(jsonform);
+        const output = JSON.parse(jsonform);
 
-        console.log('Data written successfully!');
+        fs.writeFile('output.json', jsonform, (err) => {
+            if (err) {
+                console.log(err)
+                throw err;
+                return;
+            };
+
+            console.log('Data written successfully!');
 
 
 
-    })
+        })
 
 
-});
+    });
+}
 
 
 
