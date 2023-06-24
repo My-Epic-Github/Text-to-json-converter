@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 const prompt = require('prompt-sync')();
 const readline = require('readline')
 const r1 = readline.createInterface({
@@ -6,7 +7,7 @@ const r1 = readline.createInterface({
     output : process.stdout
 })
 
-function txtToJson(dir) {
+function txtToJson(dir, filename) {
     const filein = fs.readFile(dir, 'utf8', (err, data) => {
 
         if (err) {
@@ -24,7 +25,7 @@ function txtToJson(dir) {
         console.log(jsonform);
         const output = JSON.parse(jsonform);
 
-        return fs.writeFile('output.json', jsonform, (err) => {
+        return fs.writeFile(`${filename}.json`, jsonform, (err) => {
             if (err) {
                 console.log(err)
                 throw err;
@@ -42,7 +43,13 @@ function txtToJson(dir) {
 }
 
 
-let directoryin = prompt('Input directory: ');
-return txtToJson(directoryin);
+let directoryin = prompt('Input .txt file directory: ');
+let suffix = path.extname(directoryin);
+if (suffix !== '.txt') {
+    console.log('Error: Input file is not plaintext');
+    return;
+}
+let filename = prompt('Input the filename to output to: ');
+return txtToJson(directoryin, filename);
 
 
